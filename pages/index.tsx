@@ -21,7 +21,7 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>ELE206 Lab 4</title>
+        <title>ELE206 Simon Lab</title>
         <link rel="icon" href="/PUwhite.svg" />
       </Head>
 
