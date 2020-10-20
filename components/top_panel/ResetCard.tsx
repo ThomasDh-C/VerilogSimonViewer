@@ -1,8 +1,21 @@
 import React from 'react'
+import styled from 'styled-components'
 import { Card } from 'antd';
 import DropdownSelector from '../DropdownSelector'
 
+const ResetViewer = styled.div`
+    position: relative;
+    padding-top: auto;
+    margin-top: 10px;
+    border-radius:5px;
+    border: 1px solid #d9d9d9;
+    background-color: ${props => props.reset == "1" ? "#FF4D4D" : ""};
+`
 
+const CentredText = styled.p`
+    text-align: center;
+    padding-top: 15px;
+`
 const ResetCard = (props) => {
     const [SignalAvailableIndex, setSignalAvailableIndex] = React.useState(0)
 
@@ -18,16 +31,18 @@ const ResetCard = (props) => {
     }
 
     // get string of signal from array at timeindex
-    const signalString = (props.vcdObj.hasOwnProperty('signal') ? props.vcdObj.signal[SignalAvailableIndex].wave[timeindex][1] : '000')
+    const signalString = (props.vcdObj.hasOwnProperty('signal') ? props.vcdObj.signal[SignalAvailableIndex].wave[timeindex][1] : '0')
     const value = '0'.repeat(Math.abs(1 - signalString.length)) + signalString
 
     let output = ""
     if (signalString.length < 2) output = value.charAt(0)
 
     return (
-        <Card title="Reset Signal - rst" style={{ width: 300, marginRight: 30 }}>
+        <Card type="inner" title="Reset Signal - rst" style={{ width: 300, marginRight: 30 }}>
             <DropdownSelector vcdObj={props.vcdObj} setSignalAvailableIndex={setSignalAvailableIndex} />
-            <p>{output}</p>
+            <ResetViewer reset={value.charAt(0)}>
+                <CentredText>{output}</CentredText>
+            </ResetViewer>
         </Card>
     )
 }
