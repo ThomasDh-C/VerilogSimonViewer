@@ -1,8 +1,6 @@
 import React from 'react'
 import { Card } from 'antd';
-import TrafficLight from './TrafficLight'
-import DropdownSelector from './DropdownSelector'
-
+import DropdownSelector from '../DropdownSelector'
 
 
 const SignalCard = (props) => {
@@ -21,11 +19,14 @@ const SignalCard = (props) => {
 
     // get string of signal from array at timeindex
     const signalString = (props.vcdObj.hasOwnProperty('signal') ? props.vcdObj.signal[SignalAvailableIndex].wave[timeindex][1] : '000')
-
+    const value = '0'.repeat(Math.abs(1 - signalString.length)) + signalString
+    let output = ""
+    if (value.charAt(0) == "0" && signalString.length < 2) output = "Easy mode"
+    if (value.charAt(0) == "1" && signalString.length < 2) output = "Hard mode"
     return (
-        <Card title={props.street} style={{ width: 300, marginRight: 30 }}>
+        <Card title="Difficulty Level - level" style={{ width: 300, marginRight: 30 }}>
             <DropdownSelector vcdObj={props.vcdObj} setSignalAvailableIndex={setSignalAvailableIndex} />
-            <TrafficLight value={signalString} />
+            <p>{output}</p>
         </Card>
     )
 }

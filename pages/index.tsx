@@ -4,7 +4,8 @@ import styles from '../styles/Home.module.css'
 import Head from 'next/head'
 import ImportFromFile from '../components/ImportFromFile'
 import TimeSlider from '../components/TimeSlider'
-import SignalCard from '../components/SignalCard'
+import TopPanel from '../components/top_panel/TopPanel'
+import BottomPanel from '../components/bottom_panel/BottomPanel'
 
 const Row = styled.div`
   display: flex;
@@ -25,13 +26,11 @@ const Home = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}> ELE206 Lab 4 - VCD Viewer </h1>
+        <h1 className={styles.title}> ELE206 Simon - VCD Viewer </h1>
         <ImportFromFile setVCD={setVCD} />
 
-        <Row>
-          <SignalCard time={time} vcdObj={vcdObj} street="Washington Road" />
-          <SignalCard time={time} vcdObj={vcdObj} street="Prospect Avenue" />
-        </Row>
+        <TopPanel time={time} vcdObj={vcdObj} />
+        <BottomPanel time={time} vcdObj={vcdObj} />
 
         <TimeSlider vcdObj={vcdObj} time={time} setTime={setTime} />
       </main>

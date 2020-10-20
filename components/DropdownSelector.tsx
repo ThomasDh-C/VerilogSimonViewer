@@ -10,7 +10,16 @@ const DropdownSelector = (props) => {
     }
 
     return (
-        <Select defaultValue="Set Me" style={{ width: 240 }} onChange={handleChange}>
+        <Select
+            showSearch
+            defaultValue="Set Me"
+            style={{ width: 240 }}
+            onChange={handleChange}
+            optionFilterProp="children"
+            filterOption={(input, option) =>
+                option.children.toString().toLowerCase().indexOf(input.toLowerCase()) >= 0
+            }
+        >
             {/* list all signal names in drop down */}
             {props.vcdObj.hasOwnProperty('signal') &&
                 props.vcdObj.signal.map((value, index) =>
