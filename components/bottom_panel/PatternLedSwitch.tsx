@@ -17,25 +17,32 @@ const Switcher = styled.div`
     position: relative;
     width:23px;
     height:33px;
-    margin-top: 26px;
+    margin-top: ${props => props.marginTop};
     margin-left: 1px;
     vertical-align: middle;
     border-radius: 4px;
-    
     background-color: #FF0000;
 `
 
+const CentredText = styled.p`
+text-align: center;
+padding-top: 6px;
+`
+
 const PatternLedSwitch = (props) => {
-    // const value = '0'.repeat(Math.abs(3 - props.value.length)) + props.value
-    // const red = (value.charAt(2) == '1' ? "#FF0000" : "grey")
-    // const yellow = (value.charAt(1) == '1' ? "#FFFF00" : "grey")
-    // const green = (value.charAt(0) == '1' ? "#00FF00" : "grey")
+    let marginTop = "26px"
+    if (props.value == "1") marginTop = "1px"
 
     return (
-        <Bar>
-            <Switcher>
-            </Switcher>
-        </Bar>
+        <>
+            <Bar>
+                <Switcher marginTop={marginTop}>
+                    <CentredText>{props.switchNumber}</CentredText>
+                </Switcher>
+
+            </Bar>
+
+        </>
     )
 }
 

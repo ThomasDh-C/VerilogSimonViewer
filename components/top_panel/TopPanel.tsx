@@ -9,7 +9,7 @@ const Row = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 30px;
   align-content: space-between;
 `
 
