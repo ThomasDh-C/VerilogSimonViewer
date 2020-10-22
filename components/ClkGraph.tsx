@@ -20,10 +20,12 @@ const ClkGraph = (props) => {
 
     const [options, setOptions] = React.useState({
         chart: {
-            id: 'line',
             toolbar: {
                 show: false,
-            }
+            },
+            zoom: {
+                enabled: false,
+            },
         },
         stroke: {
             curve: 'stepline',
@@ -43,6 +45,9 @@ const ClkGraph = (props) => {
                 }
             }],
         },
+        tooltip: {
+            enabled: false,
+        },
 
     });
     const [series, setSeries] = React.useState([
@@ -54,7 +59,7 @@ const ClkGraph = (props) => {
     return (
         <WideDiv>
             <Col span={18}>
-                <Small><Chart options={options} series={series} type='line' height="100%" /></Small>
+                <Small><Chart options={options} series={series} height="100%" /></Small>
 
             </Col>
             <Col span={6}>
