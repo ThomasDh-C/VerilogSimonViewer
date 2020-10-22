@@ -74,10 +74,10 @@ const BottomPanel = (props) => {
         <DropdownSelector vcdObj={props.vcdObj} setSignalAvailableIndex={setSignalAvailableIndexButtons} /></Col>
         <Col span={18}>
           <RowFourElementBottom>
-            <PatternLedSwitch value={valuebuttons.charAt(0)} switchNumber="0"/>
-            <PatternLedSwitch value={valuebuttons.charAt(1)} switchNumber="1"/>
-            <PatternLedSwitch value={valuebuttons.charAt(2)} switchNumber="2"/>
-            <PatternLedSwitch value={valuebuttons.charAt(3)} switchNumber="3"/>
+            <PatternLedSwitch value={valuebuttons.charAt(0)} switchNumber="3" />
+            <PatternLedSwitch value={valuebuttons.charAt(1)} switchNumber="2" />
+            <PatternLedSwitch value={valuebuttons.charAt(2)} switchNumber="1" />
+            <PatternLedSwitch value={valuebuttons.charAt(3)} switchNumber="0" />
           </RowFourElementBottom>
         </Col>
       </Row>
