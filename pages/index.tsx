@@ -6,6 +6,7 @@ import ImportFromFile from '../components/ImportFromFile'
 import TimeSlider from '../components/TimeSlider'
 import TopPanel from '../components/top_panel/TopPanel'
 import BottomPanel from '../components/bottom_panel/BottomPanel'
+import ClkGraph from '../components/ClkGraph'
 
 const Row = styled.div`
   display: flex;
@@ -31,7 +32,7 @@ const Home = () => {
 
         <TopPanel time={time} vcdObj={vcdObj} />
         <BottomPanel time={time} vcdObj={vcdObj} />
-
+        <ClkGraph vcdObj={vcdObj} time={time} setTime={setTime} />
         <TimeSlider vcdObj={vcdObj} time={time} setTime={setTime} />
       </main>
 
