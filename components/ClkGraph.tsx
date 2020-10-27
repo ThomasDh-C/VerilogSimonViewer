@@ -2,6 +2,7 @@ import React from 'react'
 import { Row, Col } from 'antd';
 import styled from 'styled-components'
 import dynamic from 'next/dynamic';
+import DropdownSelector from './DropdownSelector'
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 
@@ -18,7 +19,7 @@ const Small = styled.div`
 `
 const ClkGraph = (props) => {
 
-    const [options, setOptions] = React.useState({
+    let options = ({
         chart: {
             toolbar: {
                 show: false,
@@ -32,8 +33,9 @@ const ClkGraph = (props) => {
         },
         annotations: {
             xaxis: [{
-                x: 2,
-                strokeDashArray: 0,
+                x: props.time,
+                strokeDashArray: [5, 1],
+                borderWidth: 3,
                 borderColor: '#775DD0',
                 label: {
                     borderColor: '#775DD0',
@@ -48,14 +50,30 @@ const ClkGraph = (props) => {
         tooltip: {
             enabled: false,
         },
+        grid: {
+            show: true,
+        },
+        yaxis: {
+            tickAmount: 1,
+            labels: {
+                formatter: (val) => { return Math.floor(val) }
+            }
+        },
+
 
     });
-    const [series, setSeries] = React.useState([
-        {
-            name: 'clk',
-            data: [[1, 0], [3, 1], [5, 0]],
-        },
-    ]);
+
+
+    const [SignalAvailableIndex, setSignalAvailableIndex] = React.useState(0)
+
+
+
+    const signal = (props.vcdObj.hasOwnProperty('signal') ? (props.vcdObj.signal[SignalAvailableIndex].wave.map((subarray) => subarray.map(Number))) : ([]))
+    let series = [{
+        name: 'clk',
+        data: signal,
+    }];
+
     return (
         <WideDiv>
             <Col span={18}>
@@ -63,8 +81,9 @@ const ClkGraph = (props) => {
 
             </Col>
             <Col span={6}>
+                <DropdownSelector vcdObj={props.vcdObj} setSignalAvailableIndex={setSignalAvailableIndex} />
             </Col>
-        </WideDiv>
+        </WideDiv >
 
     )
 }

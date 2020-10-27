@@ -32,7 +32,7 @@ const Home = () => {
 
         <TopPanel time={time} vcdObj={vcdObj} />
         <BottomPanel time={time} vcdObj={vcdObj} />
-        <ClkGraph vcdObj={vcdObj} time={time} setTime={setTime} />
+        <ClkGraph vcdObj={vcdObj} time={time} />
         <TimeSlider vcdObj={vcdObj} time={time} setTime={setTime} />
       </main>
 
