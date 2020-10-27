@@ -89,7 +89,7 @@ const ClkGraph = (props) => {
 
             </Col>
             <CentredCol span={6}>
-                <DropdownSelector vcdObj={props.vcdObj} setSignalAvailableIndex={setSignalAvailableIndex} style={{ margin: '0 16px' }} />
+                <DropdownSelector vcdObj={props.vcdObj} setSignalAvailableIndex={setSignalAvailableIndex} />
             </CentredCol>
         </WideDiv >
 
