@@ -17,6 +17,14 @@ const Small = styled.div`
     height: 120px;
     padding: 0px;
 `
+
+const CentredCol = styled(Col)`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
+
 const ClkGraph = (props) => {
 
     let options = ({
@@ -80,9 +88,9 @@ const ClkGraph = (props) => {
                 <Small><Chart options={options} series={series} height="100%" /></Small>
 
             </Col>
-            <Col span={6}>
-                <DropdownSelector vcdObj={props.vcdObj} setSignalAvailableIndex={setSignalAvailableIndex} />
-            </Col>
+            <CentredCol span={6}>
+                <DropdownSelector vcdObj={props.vcdObj} setSignalAvailableIndex={setSignalAvailableIndex} style={{ margin: '0 16px' }} />
+            </CentredCol>
         </WideDiv >
 
     )
